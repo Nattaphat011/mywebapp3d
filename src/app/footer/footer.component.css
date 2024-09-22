@@ -1,0 +1,48 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    .info {
+      p {
+        margin: 5px 0;
+      }
+    }
+
+  
+    .links {
+      display: flex;
+  
+      div {
+        margin-right: 30px;
+  
+        h4 {
+          margin-bottom: 10px;
+        }
+  
+        ul {
+          list-style: none;
+          padding: 0;
+  
+          li {
+            margin-bottom: 5px;
+          }
+  
+          a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+  
+            &:hover {
+              color: gray;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .views {
+    display: grid;
+  }
