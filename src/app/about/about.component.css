@@ -4,12 +4,13 @@
     top: 0;
 }
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: white;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+  background: linear-gradient(#1FA0FF 0%,#12DAFB 50%, #A7FDCC 100%);
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 }
   
   .navbar-logo {

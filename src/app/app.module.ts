@@ -7,6 +7,14 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
@@ -19,15 +27,11 @@ import { HanpukComponent } from './hanpuk/hanpuk.component';
 import { DesignComponent } from './design/design.component';
 import { Login2Component } from './login2/login2.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; 
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { AccoustComponent } from './accoust/accoust.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +49,8 @@ import { MatButtonModule } from '@angular/material/button';
     DesignComponent,
     Login2Component,
     DashboardComponent,
-    AdminComponent
+    AdminComponent,
+    AccoustComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +59,12 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     FormsModule,
     MatCardModule,
-MatFormFieldModule,
- MatInputModule,
-MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
   providers: [
     provideAnimationsAsync(),

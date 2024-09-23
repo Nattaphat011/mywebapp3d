@@ -35,8 +35,8 @@ export class RegisterComponent {
 
     this.authService.register(newUser).subscribe(
       response => {
-        console.log('Registration successful!', response);
-        alert('Registration successful!');
+        console.log('สมัครเสร็จสิ้น เข้าสู่ระบบได้เลย!', response);
+        alert('สมัครเสร็จสิ้น เข้าสู่ระบบได้เลย!!');
       },
       error => {
         console.error('Registration failed', error);

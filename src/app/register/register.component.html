@@ -34,6 +34,7 @@
 </div>
 <body>
   
+  <div class="views-2">
   <mat-card class="register-card">
     <h2>สมัครสมาชิก</h2>
     <form (ngSubmit)="onRegister()">
@@ -61,45 +62,45 @@
         <mat-label>ยืนยันรหัสผ่าน</mat-label>
         <input matInput [(ngModel)]="confirmPassword" name="confirmPassword" type="password" required>
       </mat-form-field>
-  
+      <p>มีบัญชีอยู่แล้ว -><a href="/login">เข้าสู่ระบบ</a></p>
       <button mat-raised-button color="primary" type="submit">สมัครสมาชิก</button>
     </form>
   </mat-card>
-  
+  </div>
   
 </body>
-    <div class="views">
-        <footer class="footer">
-            <div class="info">
-            <img src="assets/logo-krabi.png" alt="">
-            <p>ระบบออกแบบเสื้อปักสกรีนวิสัยทัศน์ 3 มิติ</p>
-            <p>3D vision screen embroidery shirt design system</p>
-            <br>
-            <div class="social-media">
-                <a href="https://www.facebook.com/somsaklakphet">
-                  <i class="fab fa-facebook"></i> กระบี่ซิลล์สกรีน</a>
-              </div>
-        </div>  
-          <div class="links">
-          <div class="cardfacebook">
-              <h4>Krabisilkscreen</h4>
-                <ul>
-                  <li><a href="#">บัญชีของฉัน</a></li>
-                  <li><a href="#">การออกแบบ</a></li>
-                  <li><a href="#">งานปัก</a></li>
-                  <li><a href="#">งานสกรีน</a></li>
-                  <li><a href="#">บทความ</a></li>
-                  <li><a href="#">เกี่ยวกับเรา</a></li>
-                  <li><a href="/contact">ติดต่อเรา</a></li>
-                </ul>
-              </div>
-          <div>
-              <h4>สินค้า</h4>
-          <ul>
-              <li><a href="#">เสื้อยืด</a></li>
-              <li><a href="#">Polo</a></li>
-          </ul>
-      </div>
-      </div>
-   </footer>
+<div class="views">
+    <footer class="footer">
+        <div class="info">
+        <img src="assets/logo-krabi.png" alt="">
+        <p>ระบบออกแบบเสื้อปักสกรีนวิสัยทัศน์ 3 มิติ</p>
+        <p>3D vision screen embroidery shirt design system</p>
+        <br>
+        <div class="social-media">
+            <a href="https://www.facebook.com/somsaklakphet">
+              <i class="fab fa-facebook"></i> กระบี่ซิลล์สกรีน</a>
+          </div>
+    </div>  
+      <div class="links">
+      <div class="cardfacebook">
+          <h4>Krabisilkscreen</h4>
+            <ul>
+              <li><a href="/accoust">บัญชีของฉัน</a></li>
+              <li><a href="/design">การออกแบบ</a></li>
+              <li><a href="/hanpuk">งานปัก</a></li>
+              <li><a href="/hanscreen">งานสกรีน</a></li>
+              <li><a href="#">บทความ</a></li>
+              <li><a href="/about">เกี่ยวกับเรา</a></li>
+              <li><a href="/contact">ติดต่อเรา</a></li>
+            </ul>
+          </div>
+      <div>
+          <h4>สินค้า</h4>
+      <ul>
+          <li><a href="/tshirt-yud">เสื้อยืด</a></li>
+          <li><a href="/tshirt-polo">Polo</a></li>
+      </ul>
+  </div>
+  </div>
+</footer>
 </div>

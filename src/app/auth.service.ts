@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../environments/environment';
+import { HttpHeaders } from '@angular/common/http';
 
 interface User {
   firstName: string;
@@ -36,7 +37,11 @@ export class AuthService {
   }
 
   login(credentials: Credentials): Observable<any> {
-    return this.http.post<any>(this.loginUrl, credentials).pipe(
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}` // หรือวิธีการเก็บ token ของคุณ
+    });
+  
+    return this.http.post<any>(this.loginUrl, credentials, { headers }).pipe(
       catchError(error => {
         console.error('Login failed', error);
         return throwError(error);

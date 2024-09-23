@@ -14,6 +14,8 @@ import { HanscreenComponent } from './hanscreen/hanscreen.component';
 import { HanpukComponent } from './hanpuk/hanpuk.component';
 import { Login2Component } from './login2/login2.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AccoustComponent } from './accoust/accoust.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 const routes: Routes = [
@@ -61,12 +63,24 @@ const routes: Routes = [
   {path: 'hanpuk', component:HanpukComponent },
   {path: 'header', component:HeaderComponent },
 
+  {path: '', redirectTo: 'accoust', pathMatch: 'full' },
+  {path: 'accoust', component:AccoustComponent },
+  {path: 'header', component:HeaderComponent },
+
+  {path: '', redirectTo: 'tshirt-yud', pathMatch: 'full' },
+  {path: 'tshirt-yud', component:TshirtYudComponent },
+  {path: 'header', component:HeaderComponent },
+
+  {path: '', redirectTo: 'tshirt-polo', pathMatch: 'full' },
+  {path: 'tshirt-polo', component:TshirtPoloComponent },
+  {path: 'header', component:HeaderComponent },
+
   {path: '', redirectTo: 'about', pathMatch: 'full' },
   {path: 'about', component:AboutComponent },
   {path: 'login', component:LoginComponent },
-
+  { path: 'admin', component: AdminComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'header', component: HeaderComponent }, // เส้นทางไปยังหน้าหลัก
+  { path: 'account', component: AccoustComponent }, // เส้นทางไปยังหน้าหลัก
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // เปลี่ยนเส้นทางเริ่มต้น
 ];
 

@@ -16,8 +16,8 @@ export class LoginComponent {
     this.authService.login({ email: this.email, password: this.password }).subscribe(
       response => {
         console.log('Login successful!', response);
-        localStorage.setItem('token', response.token); // เก็บ token ลงใน localStorage
-        this.router.navigate(['/header']); // เปลี่ยนเส้นทางไปยังหน้าหลัก
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/account']);
       },
       error => {
         console.error('Login failed', error);

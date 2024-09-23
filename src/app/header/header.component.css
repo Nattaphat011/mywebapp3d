@@ -4,12 +4,13 @@
     top: 0;
 }
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: white;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+  background: linear-gradient(#1FA0FF 0%,#12DAFB 50%, #A7FDCC 100%);
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 }
   
   .navbar-logo {
@@ -89,6 +90,8 @@
   
   .dropdown-menu li:hover {
     background-color: #e7e6e6;
+    width: 100px;
+    padding: 8px 15px;
   }
   
   @media (max-width: 768px) {
@@ -105,25 +108,23 @@
         margin-top: 10px;
     }
   }
-body {
-    display: flex;
-    flex-direction: column;
-    margin-top: 200px;
-    align-items: center;
-}
-  
   @media (max-width: 768px) {
     .branch-container {
       flex-direction: column;
       align-items: center;
     }
-    
+
     .branch-card {
       width: 100%;
       max-width: 400px;
     }
   }
-  
+  body {
+    display: flex;
+    flex-direction: column;
+    
+    
+}
   .footer {
     display: flex;
     justify-content: space-between;
@@ -181,6 +182,33 @@ body {
     margin-right: 10px;
   }
   
-  .views {
+.views {
     display: grid;
   }
+
+.slider-background {
+    width: 100% ;
+    height: 800px; /* Set this to the desired height */
+    background-size: cover;
+    animation-name: slider;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes slider {
+  0% { background-image: url('/assets/1.png'); }
+  30% { background-image: url('/assets/2.png'); }
+  50% { background-image: url('/assets/3.jpg'); }
+  80% { background-image: url('/assets/4.jpg'); }
+  100% { background-image: url('/assets/5.png'); }
+}
+
+.hr {
+    width: 100%;
+    height: 10px;
+    background:
+      linear-gradient(90deg, #FFCC70, #C850C0, #4158D0);
+    margin: 5px 0;
+}
+
+  

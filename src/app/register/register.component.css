@@ -3,14 +3,16 @@
     position: sticky;
     top: 0;
   }
+
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     background-color: white;
+    background: linear-gradient(#1FA0FF 0%,#12DAFB 50%, #A7FDCC 100%);
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
-  }
+}
   
   .navbar-logo {
     display: flex;
@@ -89,6 +91,8 @@
   
   .dropdown-menu li:hover {
     background-color: #e7e6e6;
+    width: 100px;
+    padding: 8px 15px;
   }
   
   @media (max-width: 768px) {
@@ -108,7 +112,7 @@
   body {
     display: flex;
     flex-direction: column;
-    margin-top: 200px;
+    
     align-items: center;
   }
   
@@ -181,6 +185,47 @@
     margin-right: 10px;
   }
   
-  .views {
+  .views-2 {
     display: grid;
+    margin: 100px;
+    
+  }
+
+  .register-card {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+
+  .register-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .register-card form {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .register-card p {
+    text-align: center;
+  }
+
+  .register-card a {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  .register-card a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .register-card {
+      width: 90%;
+      padding: 15px;
+    }
   }
