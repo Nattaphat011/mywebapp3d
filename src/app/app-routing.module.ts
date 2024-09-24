@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
@@ -13,9 +14,11 @@ import { TshirtPoloComponent } from './tshirt-polo/tshirt-polo.component';
 import { HanscreenComponent } from './hanscreen/hanscreen.component';
 import { HanpukComponent } from './hanpuk/hanpuk.component';
 import { Login2Component } from './login2/login2.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccoustComponent } from './accoust/accoust.component';
 import { AdminComponent } from './admin/admin.component';
+import { DesignComponent } from './design/design.component';
+import { AddressComponent } from './address/address.component';
+import { Address2Component } from './address2/address2.component';
 
 
 const routes: Routes = [
@@ -38,10 +41,6 @@ const routes: Routes = [
   {path: '', redirectTo: 'about', pathMatch: 'full' },
   {path: 'about', component:AboutComponent },
   {path: 'login', component:Login2Component },
-
-  {path: '', redirectTo: 'login2', pathMatch: 'full' },
-  {path: 'login', component:LoginComponent },
-  {path: 'register', component:RegisterComponent },
 
   {path: '', redirectTo: 'all', pathMatch: 'full' },
   {path: 'all', component:AllComponent },
@@ -75,13 +74,27 @@ const routes: Routes = [
   {path: 'tshirt-polo', component:TshirtPoloComponent },
   {path: 'header', component:HeaderComponent },
 
+  {path: '', redirectTo: 'header', pathMatch: 'full' },
+  {path: 'header', component:HeaderComponent },
+  {path: 'design', component:DesignComponent },
+
+  {path: '', redirectTo: 'accoust', pathMatch: 'full' },
+  {path: 'accoust', component:AccoustComponent },
+  {path: 'address', component:AddressComponent },
+
+  {path: '', redirectTo: 'address2', pathMatch: 'full' },
+  {path: 'address2', component:Address2Component },
+
   {path: '', redirectTo: 'about', pathMatch: 'full' },
   {path: 'about', component:AboutComponent },
-  {path: 'login', component:LoginComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'account', component: AccoustComponent }, // เส้นทางไปยังหน้าหลัก
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // เปลี่ยนเส้นทางเริ่มต้น
+
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'account', component: AccoustComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
+
 ];
 
 @NgModule({

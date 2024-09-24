@@ -21,6 +21,7 @@ interface Credentials {
   providedIn: 'root'
 })
 export class AuthService {
+  [x: string]: any;
   private registerUrl = `${environment.apiUrl}/register`;
   private loginUrl = `${environment.apiUrl}/login`;
   private usersUrl = `${environment.apiUrl}/users`;
@@ -57,4 +58,12 @@ export class AuthService {
       })
     );
   }
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token'); // ตรวจสอบว่ามี token อยู่ใน localStorage หรือไม่
+  }
+
+  logout(): void {
+    localStorage.removeItem('token'); // ลบโทเค็นจาก localStorage
+  }
+  
 }

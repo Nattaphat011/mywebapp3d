@@ -74,6 +74,29 @@ app.post('/api/login', (req, res) => {
   });
 });
 
+// ออกจากระบบ (Logout)
+app.post('/api/logout', (req, res) => {
+  // ในที่นี้ เราจะไม่ทำการทำลายโทเค็น แต่เราจะให้ความรู้ว่าได้ออกจากระบบแล้ว
+  res.status(200).json({ message: 'Logout successful!' });
+});
+
+
+app.get('/api/addresses', (req, res) => {
+  const userId = req.query.userId; // รับ userId จาก query parameter
+  
+  const sql = 'SELECT * FROM addresses WHERE user_id = ?';
+  db.query(sql, [userId], (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: err.message });
+    }
+    res.status(200).json(results); // ส่งผลลัพธ์กลับไปยัง frontend
+  });
+});
+
+
+
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

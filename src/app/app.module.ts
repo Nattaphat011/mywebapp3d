@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AuthGuard } from './auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -32,6 +33,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { AccoustComponent } from './accoust/accoust.component';
+import { AddressComponent } from './address/address.component';
+import { Address2Component } from './address2/address2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +53,9 @@ import { AccoustComponent } from './accoust/accoust.component';
     Login2Component,
     DashboardComponent,
     AdminComponent,
-    AccoustComponent
+    AccoustComponent,
+    AddressComponent,
+    Address2Component
   ],
   imports: [
     BrowserModule,
@@ -68,6 +73,7 @@ import { AccoustComponent } from './accoust/accoust.component';
   ],
   providers: [
     provideAnimationsAsync(),
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
