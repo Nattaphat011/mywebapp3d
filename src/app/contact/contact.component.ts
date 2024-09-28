@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './contact.component.css'
 })
 export class ContactComponent {
+  @ViewChild('homeSection', { static: false }) homeSection!: ElementRef;
   contact1 = [
     {
       name: 'กระบี่ซิลล์สกรีน',
@@ -18,4 +19,7 @@ export class ContactComponent {
       googleMapUrl: 'https://www.google.com/maps/place/%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B5%E0%B9%88%E0%B8%8B%E0%B8%B4%E0%B8%A5%E0%B8%84%E0%B9%8C%E0%B8%AA%E0%B8%81%E0%B8%A3%E0%B8%B5%E0%B8%99/@8.0770382,98.9014822,17z/data=!3m1!4b1!4m6!3m5!1s0x30519505cc435de9:0xd3fe4bb19ccf9583!8m2!3d8.0770382!4d98.9040571!16s%2Fg%2F11hdsfw1sp?authuser=1&entry=ttu&g_ep=EgoyMDI0MDkxOC4xIKXMDSoASAFQAw%3D%3D'
     }
   ];
+  scrollToSection4() {
+    this.homeSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
 }

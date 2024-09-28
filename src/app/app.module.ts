@@ -4,6 +4,9 @@ import { AuthGuard } from './auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -15,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -35,6 +39,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AccoustComponent } from './accoust/accoust.component';
 import { AddressComponent } from './address/address.component';
 import { Address2Component } from './address2/address2.component';
+import { Accoust2Component } from './accoust2/accoust2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +60,8 @@ import { Address2Component } from './address2/address2.component';
     AdminComponent,
     AccoustComponent,
     AddressComponent,
-    Address2Component
+    Address2Component,
+    Accoust2Component
   ],
   imports: [
     BrowserModule,
@@ -70,6 +76,9 @@ import { Address2Component } from './address2/address2.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule
   ],
   providers: [
     provideAnimationsAsync(),

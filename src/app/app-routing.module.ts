@@ -19,6 +19,7 @@ import { AdminComponent } from './admin/admin.component';
 import { DesignComponent } from './design/design.component';
 import { AddressComponent } from './address/address.component';
 import { Address2Component } from './address2/address2.component';
+import { Accoust2Component } from './accoust2/accoust2.component';
 
 
 const routes: Routes = [
@@ -93,8 +94,18 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'account', component: AccoustComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 
+  { path: 'register', component: RegisterComponent },
+  { path: 'contact', component: ContactComponent },
+  {path: '', redirectTo: 'contact', pathMatch: 'full' },
+  
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+
+  { path: 'accoust2', component: Accoust2Component },
+  { path: 'accoust', component: AccoustComponent },
+  {path: '', redirectTo: 'accoust', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -1,103 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AddressService } from '../address.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { AddressService } from '../address.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-address2',
   templateUrl: './address2.component.html',
-  styleUrls: ['./address2.component.css'] // แก้ไข styleUrl เป็น styleUrls
+  styleUrls: ['./address2.component.css']
 })
-export class Address2Component implements OnInit {
-  addresses: any[] = [];
-  selectedAddress: any = null;
-  newAddress: any = {}; // ตัวแปรสำหรับที่อยู่ใหม่
-  userId = 1; // เปลี่ยน userId ให้ตรงกับผู้ใช้ที่ล็อกอินอยู่
-
-  constructor(private addressService: AddressService, private router: Router, private authService: AuthService) {}
-
-  ngOnInit() {
-    this.authService.getUsers(); 
-    this.loadAddresses();
+export class Address2Component {
+  [x: string]: any;
+  addressForm: FormGroup;
+  token: any;
+  constructor(private fb: FormBuilder, private addressService: AddressService, private authService: AuthService, private router: Router) {
+    this.addressForm = this.fb.group({
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      telephone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      address: ['', Validators.required],
+      sub_district: [''],
+      district: [''],
+      province: [''],
+      zip_code: ['']
+    });
   }
+  onSubmit() {
+    if (this.addressForm.valid) {
+      const addressData = this.addressForm.value;
+      const token = localStorage.getItem('token');
 
+      if (token) {
+        this.addressService.addAddress(addressData, token).subscribe(
+          (response) => {
+            alert ('Address saved successfully');
+            this.addressForm.reset();
+          },
+          (error: HttpErrorResponse) => {
+            alert('Failed to save address: ' + error.message);
+          }
+        );
+  } else {
+    alert('You are not authenticated. Please log in.');
+    this.router.navigate(['/login']);
+  }
+ }
+}// Logout and navigate to login
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-  
-  loadAddresses() {
-    this.addressService.getAddress(this.userId).subscribe(
-      (data: any[]) => {
-        console.log('Addresses loaded:', data); // เพิ่มการแสดงผลข้อมูลที่ดึงมาได้
-        this.addresses = data;
-      },
-      error => {
-        console.error('Error loading addresses:', error);
-        console.log('Error message:', error.message); // แสดงรายละเอียดของ error
-      }
-    );
-  }
-
-  
-  
-  // loadAddresses() {
-  //   const userId = 1; // เปลี่ยน userId ให้ตรงกับผู้ใช้ที่ล็อกอินอยู่
-  //   this.addressService.getAddress(userId).subscribe(
-  //     (data: any[]) => {
-  //       this.addresses = data;
-  //     },
-  //     error => {
-  //       console.error('Error loading addresses:', error);
-  //     }
-  //   );
-  // }
-
-  deleteAddress(addressId: number) {
-    if (confirm('คุณแน่ใจหรือไม่ที่จะลบที่อยู่นี้?')) {
-      this.addressService.deleteAddress(addressId).subscribe(
-        (response: { message: string }) => {
-          console.log(response.message);
-          this.loadAddresses(); // โหลดรายการที่อยู่อีกครั้ง
-        },
-        error => {
-          console.error('Error deleting address:', error);
-        }
-      );
-    }
-  }
-
-  editAddress(address: any) {
-    this.selectedAddress = { ...address }; // ทำสำเนาของข้อมูลที่อยู่ที่ต้องการแก้ไข
-  }
-
-  saveAddress() {
-    if (this.selectedAddress && this.selectedAddress.id) {
-      this.addressService.updateAddress(this.selectedAddress.id, this.selectedAddress).subscribe(
-        (response: { message: string }) => {
-          console.log(response.message);
-          this.loadAddresses(); // โหลดรายการที่อยู่อีกครั้ง
-          this.selectedAddress = null; // รีเซ็ตการแก้ไข
-        },
-        error => {
-          console.error('Error saving address:', error);
-        }
-      );
-    }
-  }
-
-  addAddress() {
-    // เพิ่ม userId ให้กับที่อยู่ใหม่ก่อนส่งไปยัง backend
-    this.newAddress.userId = this.userId;
-    this.addressService.addAddress(this.newAddress).subscribe(
-      (response: { message: string }) => {
-        console.log(response.message);
-        this.loadAddresses(); // โหลดรายการที่อยู่อีกครั้ง
-        this.newAddress = {}; // รีเซ็ตที่อยู่ใหม่
-      },
-      error => {
-        console.error('Error adding address:', error);
-      }
-    );
-  }
 }
+

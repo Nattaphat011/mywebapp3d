@@ -24,7 +24,12 @@ db.connect(err => {
 app.post('/api/register', (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
-  // เข้ารหัสรหัสผ่าน
+  // Check if any required field is missing
+  if (!firstName || !lastName || !email || !password) {
+    return res.status(400).json({ message: 'กรุณากรอกข้อมูลชื่อ, อีเมล, และรหัสผ่านให้ครบถ้วน' }); // Custom error message
+  }
+
+  // Encrypt the password
   bcrypt.hash(password, 10, (err, hash) => {
     if (err) return res.status(500).json({ message: err.message });
 

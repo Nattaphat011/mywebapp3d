@@ -1,106 +1,130 @@
-<div class="views">
-  <nav class="navbar">
-    <div class="navbar-logo">
-      <img src="assets/logo-krabi.png" alt="Logo" />
-      <span>3D vision screen embroidery shirt design system </span>
+<div class="screen">
+  <nav>
+  <div class="logo">
+      <a href="#"><img src="assets/logo-krabi.png" alt="Logo"></a>
     </div>
-    <ul class="navbar-menu">
-      <li><a href="/header">หน้าหลัก</a></li>
-      <li class="dropdown">
-        <a href="#">สินค้า</a>
-        <ul class="dropdown-menu">
-          <li><a href="/all">ดูทั้งหมด</a></li>
-          <li><a href="/tshirt_yud">เสื้อยืด</a></li>
-          <li><a href="/tshirt_polo">เสื้อโปโล</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a href="#">บริการ</a>
-        <ul class="dropdown-menu">
-          <li><a href="hanscreen">งานสกรีน</a></li>
-          <li><a href="hanpuk">งานปัก</a></li>
-          <li><a href="/design">ออกแบบ</a></li>
-        </ul>
-      </li>
-      <li><a href="#">ผลงานของเรา</a></li>
-      <li><a href="#">บทความ</a></li>
-      <li><a href="/about">เกี่ยวกับเรา</a></li>
-      <li><a href="/contact">ติดต่อเรา</a></li>
-    </ul>
-    <div class="navbar-icons">
-      <a href="/login"><mat-icon>account_circle</mat-icon></a>
-    </div>
-  </nav>
-</div>
+    <div #homeSection id="home-section" class="section"></div>
+      <ul>
+        <li><a href="/front">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/service">Service</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+          <div class="account">
+          <a href="/login">
+            <i class="fa-regular fa-user"></i>
+          </a>
+      </div>
+      </ul>
+    </nav>
+  <br>
 <body>
   
   <div class="views-2">
-  <mat-card class="register-card">
-    <h2>สมัครสมาชิก</h2>
-    <form (ngSubmit)="onRegister()">
-      <mat-form-field appearance="outline">
-        <mat-label>ชื่อ</mat-label>
-        <input matInput [(ngModel)]="firstName" name="firstName" required>
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline">
-        <mat-label>นามสกุล</mat-label>
-        <input matInput [(ngModel)]="lastName" name="lastName" required>
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline">
-        <mat-label>อีเมล</mat-label>
-        <input matInput [(ngModel)]="email" name="email" required email>
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline">
-        <mat-label>รหัสผ่าน</mat-label>
-        <input matInput [(ngModel)]="password" name="password" type="password" required>
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline">
-        <mat-label>ยืนยันรหัสผ่าน</mat-label>
-        <input matInput [(ngModel)]="confirmPassword" name="confirmPassword" type="password" required>
-      </mat-form-field>
-      <p>มีบัญชีอยู่แล้ว -><a href="/login">เข้าสู่ระบบ</a></p>
-      <button mat-raised-button color="primary" type="submit">สมัครสมาชิก</button>
-    </form>
-  </mat-card>
-  </div>
+    <mat-card class="register-card">
+      <h2>สมัครสมาชิก</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div>
+          <label for="firstName">First Name</label>
+          <input
+            id="firstName"
+            formControlName="firstName"
+            placeholder="Enter your first name"
+            required
+          />
+          <div *ngIf="registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.touched || registerForm.get('firstName')?.dirty)" class="error">
+            <small *ngIf="registerForm.get('firstName')?.errors?.['required']">First Name is required.</small>
+          </div>
+        </div>
+      
+        <div>
+          <label for="lastName">Last Name</label>
+          <input
+            id="lastName"
+            formControlName="lastName"
+            placeholder="Enter your last name"
+            required
+          />
+          <div *ngIf="registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.touched || registerForm.get('lastName')?.dirty)" class="error">
+            <small *ngIf="registerForm.get('lastName')?.errors?.['required']">Last Name is required.</small>
+          </div>
+        </div>
+      
+        <div>
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="Enter your email"
+            required
+          />
+          <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)" class="error">
+            <small *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</small>
+            <small *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</small>
+          </div>
+        </div>
+      
+        <div>
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="Enter your password"
+            required
+          />
+          <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)" class="error">
+            <small *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</small>
+            <small *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+          </div>
+        </div>
+      
+        <div>
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            id="confirmPassword"
+            type="password"
+            formControlName="confirmPassword"
+            placeholder="Confirm your password"
+            required
+          />
+          <div *ngIf="registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.touched || registerForm.get('confirmPassword')?.dirty)" class="error">
+            <small *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</small>
+          </div>
+        </div>
+      
+        <button type="submit" [disabled]="registerForm.invalid">Register</button>
+      </form>
+    </mat-card>
+    </div>
   
 </body>
-<div class="views">
-    <footer class="footer">
-        <div class="info">
-        <img src="assets/logo-krabi.png" alt="">
-        <p>ระบบออกแบบเสื้อปักสกรีนวิสัยทัศน์ 3 มิติ</p>
-        <p>3D vision screen embroidery shirt design system</p>
-        <br>
-        <div class="social-media">
-            <a href="https://www.facebook.com/somsaklakphet">
-              <i class="fab fa-facebook"></i> กระบี่ซิลล์สกรีน</a>
-          </div>
-    </div>  
-      <div class="links">
-      <div class="cardfacebook">
-          <h4>Krabisilkscreen</h4>
-            <ul>
-              <li><a href="/accoust">บัญชีของฉัน</a></li>
-              <li><a href="/design">การออกแบบ</a></li>
-              <li><a href="/hanpuk">งานปัก</a></li>
-              <li><a href="/hanscreen">งานสกรีน</a></li>
-              <li><a href="#">บทความ</a></li>
-              <li><a href="/about">เกี่ยวกับเรา</a></li>
-              <li><a href="/contact">ติดต่อเรา</a></li>
-            </ul>
-          </div>
-      <div>
-          <h4>สินค้า</h4>
-      <ul>
-          <li><a href="/tshirt-yud">เสื้อยืด</a></li>
-          <li><a href="/tshirt-polo">Polo</a></li>
-      </ul>
-  </div>
-  </div>
-</footer>
+<div class="img1">
+  <img src="assets/LOGO-RUTS-10.png" alt="">
+</div>
+  <div class="footer">
+      <div class="footer-logo">
+      <img src="assets/logo-krabi.png" alt="">
+      </div>
+      <div class="footer-content">
+      <h3>3D vision screen embroidery shirt design system</h3>
+      <p>ระบบออกแบบเสื้อปักสกรีนวิสัยทัศน์ 3 มิติ</p>
+      </div>
+      <div class="footer-content">
+      <h3>Address</h3>
+      <p>167/11 ถนน กระบี่ ตำบล ปากน้ำ อำเภอเมืองกระบี่ กระบี่ 81000</p>
+      </div>
+      <div class="footer-content">
+      <h3>Contact</h3>
+      <p>Phone: 086-279-8798</p>
+      <p>Email: nattaphat.lมีแอดrmutsvmail.com</p>
+      <div class="i-con">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      </div>
+</div>
 </div>

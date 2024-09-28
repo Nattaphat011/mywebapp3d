@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../auth.service'; // นำเข้า AuthService
 import { Router } from '@angular/router';
 
@@ -7,18 +7,12 @@ import { Router } from '@angular/router';
   templateUrl: './accoust.component.html',
   styleUrl: './accoust.component.css'
 })
-export class AccoustComponent implements OnInit {
+export class AccoustComponent  {
   user: any = {
     addresses: [],
   };
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    // ดึงข้อมูลผู้ใช้จาก API หรือเซ็ตข้อมูลเริ่มต้นที่นี่
-    this.user = {
-      addresses: ["123 Street, Bangkok"],
-    };
-  }
 
   logout(): void {
     this.authService.logout(); // เรียกใช้ฟังก์ชัน logout

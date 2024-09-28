@@ -1,111 +1,123 @@
-<div class="views">
-  <nav class="navbar">
-    <div class="navbar-logo">
-      <img src="assets/logo-krabi.png" alt="Logo" />
-      <span>3D vision screen embroidery shirt design system </span>
+<div class="screen">
+  <nav>
+  <div class="logo">
+      <a href="#"><img src="assets/logo-krabi.png" alt="Logo"></a>
     </div>
-    <ul class="navbar-menu">
-      <li><a href="/header">หน้าหลัก</a></li>
-      <li class="dropdown">
-        <a href="#">สินค้า</a>
-        <ul class="dropdown-menu">
-          <li><a href="/all">ดูทั้งหมด</a></li>
-          <li><a href="/tshirt_yud">เสื้อยืด</a></li>
-          <li><a href="/tshirt_polo">เสื้อโปโล</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a href="#">บริการ</a>
-        <ul class="dropdown-menu">
-          <li><a href="hanscreen">งานสกรีน</a></li>
-          <li><a href="hanpuk">งานปัก</a></li>
-          <li><a href="/design">ออกแบบ</a></li>
-        </ul>
-      </li>
-      <li><a href="#">ผลงานของเรา</a></li>
-      <li><a href="#">บทความ</a></li>
-      <li><a href="/about">เกี่ยวกับเรา</a></li>
-      <li><a href="/contact">ติดต่อเรา</a></li>
-    </ul>
-    <div class="navbar-icons">
-      <a href="/login"><mat-icon>account_circle</mat-icon></a>
-    </div>
-  </nav>
-</div>
-<body>
-  <br>
-  <div class="container mt-4">
-    <div class="row">
-      <!-- Sidebar Menu -->
-      <div class="col-md-3">
-        <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action active">คำสั่งซื้อ</a>
-          <a href="#" class="list-group-item list-group-item-action">ดาวน์โหลด</a>
-          <a href="/address" class="list-group-item list-group-item-action">ที่อยู่</a>
-          <a href="/accoust2" class="list-group-item list-group-item-action">ข้อมูลบัญชี</a>
-          <button (click)="logout()">Logout</button>
-        </div>
+    <div #homeSection id="home-section" class="section"></div>
+      <ul>
+        <li><a href="/header">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/service">Service</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+          <div class="account">
+          <a href="/login">
+            <i class="fa-regular fa-user"></i>
+          </a>
       </div>
-  </div>
-  <div class="row1">
-  <p>เพิ่มที่อยู่ใหม่</p>
-  <form (ngSubmit)="addAddress()">
-    <input type="text" [(ngModel)]="newAddress.address" name="address" placeholder="ที่อยู่" required>
-    <input type="text" [(ngModel)]="newAddress.district" name="district" placeholder="เขต" required>
-    <input type="text" [(ngModel)]="newAddress.subdistrict" name="subdistrict" placeholder="ตำบล" required>
-    <input type="text" [(ngModel)]="newAddress.city" name="city" placeholder="เมือง" required>
-    <input type="text" [(ngModel)]="newAddress.province" name="province" placeholder="จังหวัด" required>
-    <input type="text" [(ngModel)]="newAddress.postalCode" name="postalCode" placeholder="รหัสไปรษณีย์" required>
-    <input type="text" [(ngModel)]="newAddress.phone" name="phone" placeholder="หมายเลขโทรศัพท์" required>
-    <button type="submit">เพิ่มที่อยู่</button>
-  </form>
+      </ul>
+    </nav>
+  <br>
+  <body>
+    <div class="container mt-4">
+      <div class="row">
+        <!-- Sidebar Menu -->
+        <div class="col-md-3">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active">คำสั่งซื้อ</a>
+            <a href="#" class="list-group-item list-group-item-action">ดาวน์โหลด</a>
+            <a href="/address" class="list-group-item list-group-item-action">ที่อยู่</a>
+            <a href="/accoust2" class="list-group-item list-group-item-action">ข้อมูลบัญชี</a>
+            <button (click)="logout()">Logout</button>
+          </div>
+        </div>
+    </div>
+    <div class="screen">
+    <div class="row1">
+      <div class="container">
+        <h2>บันทึกที่อยู่</h2>
+        <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input id="first_name" type="text" formControlName="first_name" required />
+            <div *ngIf="addressForm.get('first_name')?.invalid && addressForm.get('first_name')?.touched">
+              <small class="error">First Name is required.</small>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input id="last_name" type="text" formControlName="last_name" required />
+            <div *ngIf="addressForm.get('last_name')?.invalid && addressForm.get('last_name')?.touched">
+              <small class="error">Last Name is required.</small>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="telephone">Telephone:</label>
+            <input id="telephone" type="text" formControlName="telephone" required />
+            <div *ngIf="addressForm.get('telephone')?.invalid && addressForm.get('telephone')?.touched">
+              <small class="error">Telephone number must be 10 digits.</small>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" formControlName="address" required></textarea>
+            <div *ngIf="addressForm.get('address')?.invalid && addressForm.get('address')?.touched">
+              <small class="error">Address is required.</small>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="sub_district">Sub District:</label>
+            <input id="sub_district" type="text" formControlName="sub_district" />
+          </div>
+      
+          <div class="form-group">
+            <label for="district">District:</label>
+            <input id="district" type="text" formControlName="district" />
+          </div>
+      
+          <div class="form-group">
+            <label for="province">Province:</label>
+            <input id="province" type="text" formControlName="province" />
+          </div>
+      
+          <div class="form-group">
+            <label for="zip_code">Zip Code:</label>
+            <input id="zip_code" type="text" formControlName="zip_code" />
+          </div>
+      
+          <button type="submit" [disabled]="addressForm.invalid">Submit</button>
+        </form>
+      </div>
+    </div>
 </div>
-  
-  <h2>รายการที่อยู่</h2>
-  <ul>
-    <li *ngFor="let address of addresses">
-      {{ address.address }} - {{ address.district }}
-      <button (click)="editAddress(address)">แก้ไข</button>
-      <button (click)="deleteAddress(address.id)">ลบ</button>
-    </li>
-  </ul>
-  
 </div>
 </body>
-
-<div class="views">
-    <footer class="footer">
-        <div class="info">
-        <img src="assets/logo-krabi.png" alt="">
-        <p>ระบบออกแบบเสื้อปักสกรีนวิสัยทัศน์ 3 มิติ</p>
-        <p>3D vision screen embroidery shirt design system</p>
-        <br>
-        <div class="social-media">
-            <a href="https://www.facebook.com/somsaklakphet">
-              <i class="fab fa-facebook"></i> กระบี่ซิลล์สกรีน</a>
-          </div>
-    </div>  
-      <div class="links">
-      <div class="cardfacebook">
-          <h4>Krabisilkscreen</h4>
-            <ul>
-              <li><a href="/accoust">บัญชีของฉัน</a></li>
-              <li><a href="/design">การออกแบบ</a></li>
-              <li><a href="/hanpuk">งานปัก</a></li>
-              <li><a href="/hanscreen">งานสกรีน</a></li>
-              <li><a href="#">บทความ</a></li>
-              <li><a href="/about">เกี่ยวกับเรา</a></li>
-              <li><a href="/contact">ติดต่อเรา</a></li>
-            </ul>
-          </div>
-      <div>
-          <h4>สินค้า</h4>
-      <ul>
-          <li><a href="/tshirt-yud">เสื้อยืด</a></li>
-          <li><a href="/tshirt-polo">Polo</a></li>
-      </ul>
+<div class="footer">
+  <div class="footer-logo">
+  <img src="assets/logo-krabi.png" alt="">
+  </div>
+  <div class="footer-content">
+  <h3>3D vision screen embroidery shirt design system</h3>
+  <p>ระบบออกแบบเสื้อปักสกรีนวิสัยทัศน์ 3 มิติ</p>
+  </div>
+  <div class="footer-content">
+  <h3>Address</h3>
+  <p>167/11 ถนน กระบี่ ตำบล ปากน้ำ อำเภอเมืองกระบี่ กระบี่ 81000</p>
+  </div>
+  <div class="footer-content">
+  <h3>Contact</h3>
+  <p>Phone: 086-279-8798</p>
+  <p>Email: nattaphat.lมีแอดrmutsvmail.com</p>
+  <div class="i-con">
+  <a href="#"><i class="fab fa-facebook"></i></a>
+  <a href="#"><i class="fab fa-twitter"></i></a>
+  <a href="#"><i class="fab fa-instagram"></i></a>
+  <a href="#"><i class="fab fa-youtube"></i></a>
   </div>
   </div>
-</footer>
 </div>
-  
+</div>

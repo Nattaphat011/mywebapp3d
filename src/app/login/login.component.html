@@ -1,89 +1,83 @@
-<div class="views">
-    <nav class="navbar">
-      <div class="navbar-logo">
-        <img src="assets/logo-krabi.png" alt="Logo" />
-        <span>3D vision screen embroidery shirt design system </span>
-      </div>
-      <ul class="navbar-menu">
-        <li><a href="/header">หน้าหลัก</a></li>
-        <li class="dropdown">
-          <a href="#">สินค้า</a>
-          <ul class="dropdown-menu">
-            <li><a href="/all">ดูทั้งหมด</a></li>
-            <li><a href="/tshirt_yud">เสื้อยืด</a></li>
-            <li><a href="/tshirt_polo">เสื้อโปโล</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#">บริการ</a>
-          <ul class="dropdown-menu">
-            <li><a href="hanscreen">งานสกรีน</a></li>
-            <li><a href="hanpuk">งานปัก</a></li>
-            <li><a href="/design">ออกแบบ</a></li>
-          </ul>
-        </li>
-        <li><a href="#">ผลงานของเรา</a></li>
-        <li><a href="#">บทความ</a></li>
-        <li><a href="/about">เกี่ยวกับเรา</a></li>
-        <li><a href="/contact">ติดต่อเรา</a></li>
+<div class="screen">
+  <nav>
+  <div class="logo">
+      <a href="#"><img src="assets/logo-krabi.png" alt="Logo"></a>
+    </div>
+    <div #homeSection id="home-section" class="section"></div>
+      <ul>
+        <li><a href="/front">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/service">Service</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+          <div class="account">
+            <a href="/login" *ngIf="!isLoggedIn()">
+              <i class="fa-regular fa-user"></i>
+            </a>
+        </div>
       </ul>
-      <div class="navbar-icons">
-        <a href="/login" *ngIf="!isLoggedIn()"><mat-icon>account_circle</mat-icon></a>
-      </div>
     </nav>
-  </div>
   <body>
+    <br>
+    <br>
 <div class="backgroud-c">
     <div class="login-container">
       <h2>Login</h2>
-      <form (submit)="onLogin()">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <div>
           <label for="email">Email</label>
-          <input type="email" id="email" [(ngModel)]="email" name="email" required>
+          <input id="email" formControlName="email">
+          <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+            <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
+            <small *ngIf="loginForm.get('email')?.errors?.['email']">Email must be valid.</small>
+          </div>
         </div>
+      
         <div>
           <label for="password">Password</label>
-          <input type="password" id="password" [(ngModel)]="password" name="password" required>
+          <input id="password" type="password" formControlName="password">
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+          </div>
         </div>
+      
         <button type="submit">Login</button>
+        
+        <div *ngIf="errorMessage" style="color: red;">
+          {{ errorMessage }}
+        </div>
       </form>
       <a href="/forgot-password">Forgot Password?</a>
       <a href="/register">Create an account</a>
     </div>    
 </div>    
+<br><br>
 </body>
-<div class="views">
-    <footer class="footer">
-        <div class="info">
-        <img src="assets/logo-krabi.png" alt="">
-        <p>ระบบออกแบบเสื้อปักสกรีนวิสัยทัศน์ 3 มิติ</p>
-        <p>3D vision screen embroidery shirt design system</p>
-        <br>
-        <div class="social-media">
-            <a href="https://www.facebook.com/somsaklakphet">
-              <i class="fab fa-facebook"></i> กระบี่ซิลล์สกรีน</a>
-          </div>
-    </div>  
-      <div class="links">
-      <div class="cardfacebook">
-          <h4>Krabisilkscreen</h4>
-            <ul>
-              <li><a href="/accoust">บัญชีของฉัน</a></li>
-              <li><a href="/design">การออกแบบ</a></li>
-              <li><a href="/hanpuk">งานปัก</a></li>
-              <li><a href="/hanscreen">งานสกรีน</a></li>
-              <li><a href="#">บทความ</a></li>
-              <li><a href="/about">เกี่ยวกับเรา</a></li>
-              <li><a href="/contact">ติดต่อเรา</a></li>
-            </ul>
-          </div>
-      <div>
-          <h4>สินค้า</h4>
-      <ul>
-          <li><a href="/tshirt-yud">เสื้อยืด</a></li>
-          <li><a href="/tshirt-polo">Polo</a></li>
-      </ul>
-  </div>
-  </div>
-</footer>
+<div class="img1">
+  <img src="assets/LOGO-RUTS-10.png" alt="">
+</div>
+  <div class="footer">
+      <div class="footer-logo">
+      <img src="assets/logo-krabi.png" alt="">
+      </div>
+      <div class="footer-content">
+      <h3>3D vision screen embroidery shirt design system</h3>
+      <p>ระบบออกแบบเสื้อปักสกรีนวิสัยทัศน์ 3 มิติ</p>
+      </div>
+      <div class="footer-content">
+      <h3>Address</h3>
+      <p>167/11 ถนน กระบี่ ตำบล ปากน้ำ อำเภอเมืองกระบี่ กระบี่ 81000</p>
+      </div>
+      <div class="footer-content">
+      <h3>Contact</h3>
+      <p>Phone: 086-279-8798</p>
+      <p>Email: nattaphat.lมีแอดrmutsvmail.com</p>
+      <div class="i-con">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      </div>
+</div>
 </div>
